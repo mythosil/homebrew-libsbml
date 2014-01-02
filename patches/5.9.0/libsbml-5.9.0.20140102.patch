@@ -1,0 +1,12 @@
+diff -u -r libSBML-5.9.0-Source.orig/src/bindings/ruby/CMakeLists.txt libSBML-5.9.0-Source/src/bindings/ruby/CMakeLists.txt
+--- libSBML-5.9.0-Source.orig/src/bindings/ruby/CMakeLists.txt	2013-11-12 11:50:37.000000000 -0500
++++ libSBML-5.9.0-Source/src/bindings/ruby/CMakeLists.txt	2014-01-02 03:39:00.000000000 -0500
+@@ -152,7 +152,7 @@
+ if (UNIX OR CYGWIN) 
+   execute_process(COMMAND "${RUBY_EXECUTABLE}" -e "print RUBY_PLATFORM"
+     OUTPUT_VARIABLE RUBY_PLATFORM)
+-  set(RUBY_PACKAGE_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/ruby/site_ruby/${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MINOR}/${RUBY_PLATFORM})
++  set(RUBY_PACKAGE_INSTALL_DIR ${RUBY_SITEARCH_DIR})
+ else()
+   set(RUBY_PACKAGE_INSTALL_DIR ${MISC_PREFIX}bindings/ruby)
+ endif()

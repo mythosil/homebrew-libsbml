@@ -23,6 +23,9 @@ class Libsbml < Formula
   depends_on 'swig' => :build
   depends_on :python => :optional
 
+  # fix ruby's sitelib dir
+  def patches; DATA; end
+
   def install
     mkdir 'build' do
       args = std_cmake_args
@@ -48,3 +51,16 @@ class Libsbml < Formula
     end
   end
 end
+
+__END__
+--- a/src/bindings/ruby/CMakeLists.txt	2013-11-12 11:50:37.000000000 -0500
++++ b/src/bindings/ruby/CMakeLists.txt	2014-01-02 03:15:12.000000000 -0500
+@@ -152,7 +152,7 @@
+ if (UNIX OR CYGWIN) 
+   execute_process(COMMAND "${RUBY_EXECUTABLE}" -e "print RUBY_PLATFORM"
+     OUTPUT_VARIABLE RUBY_PLATFORM)
+-  set(RUBY_PACKAGE_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/ruby/site_ruby/${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MINOR}/${RUBY_PLATFORM})
++  set(RUBY_PACKAGE_INSTALL_DIR ${RUBY_SITEARCH_DIR})
+ else()
+   set(RUBY_PACKAGE_INSTALL_DIR ${MISC_PREFIX}bindings/ruby)
+ endif()
