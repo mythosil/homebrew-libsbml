@@ -43,7 +43,7 @@ class Libsbml < Formula
       args << '-DWITH_RUBY=ON' if build.with? 'ruby'
 
       system 'cmake', '..', *args
-      ENV.deparallelize # just for debug
+      #ENV.deparallelize # uncomment for debug
       system 'make', 'install'
     end
   end
