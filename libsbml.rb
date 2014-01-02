@@ -6,16 +6,22 @@ class Libsbml < Formula
   version '5.9.0'
   sha1 '91305920fa12db48d3ae7f6ea7f272415ed97616'
 
+  LANGUAGES_OPTIONAL = {
+    'csharp' => 'C#',
+    'java' => 'Java',
+    'matlab' => 'MATLAB',
+    'octave' => 'Octave',
+    'perl' => 'Perl',
+    'ruby' => 'Ruby',
+    'python' => 'Python'
+  }
+  LANGUAGES_OPTIONAL.each do |opt, lang|
+    option "with-#{opt}", "generate #{lang} interface library [default=no]"
+  end
+
   depends_on 'cmake' => :build
   depends_on 'swig' => :build
   depends_on :python => :optional
-
-  option 'with-csharp', 'generate C# interface library [default=no]'
-  option 'with-java', 'generate Java interface library [default=no]'
-  option 'with-matlab', 'generate MATLAB interface library [default=no]'
-  option 'with-octave', 'generate Octave interface library [default=no]'
-  option 'with-perl', 'generate Perl interface library [default=no]'
-  option 'with-ruby', 'generate Ruby interface library [default=no]'
 
   def install
     mkdir 'build' do
