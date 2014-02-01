@@ -31,11 +31,11 @@ class Libsbml < Formula
       args = std_cmake_args
       args << "-DCMAKE_INSTALL_PREFIX=#{prefix}"
       
-      python do
+      if build.with? 'python' then
         args << '-DWITH_PYTHON=ON'
-        args << "-DPYTHON_INCLUDE_DIR='#{python.incdir}'"
-        args << "-DPYTHON_LIBRARY='#{python.libdir}/lib#{python.xy}.dylib'"
-        args << "-DPYTHON_SETUP_ARGS:STRING='--prefix=#{prefix} --single-version-externally-managed --record=installed.txt'"
+        args << "-DPYTHON_EXECUTABLE='#{%x(python-config --prefix).chomp}/bin/python'"
+        args << "-DPYTHON_INCLUDE_DIR='#{%x(python-config --prefix).chomp}/include/python2.7'"
+        args << "-DPYTHON_LIBRARY='#{%x(python-config --prefix).chomp}/lib/libpython2.7.dylib'"
       end
 
       args << '-DWITH_CSHARP=ON' if build.with? 'csharp'
