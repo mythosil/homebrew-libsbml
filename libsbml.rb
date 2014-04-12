@@ -2,9 +2,9 @@ require 'formula'
 
 class Libsbml < Formula
   homepage 'http://sbml.org/Software/libSBML'
-  url 'http://sourceforge.net/projects/sbml/files/libsbml/5.9.0/stable/libSBML-5.9.0-core-plus-packages-src.zip'
-  version '5.9.0'
-  sha1 '91305920fa12db48d3ae7f6ea7f272415ed97616'
+  url 'http://sourceforge.net/projects/sbml/files/libsbml/5.10.0/stable/libSBML-5.10.0-core-plus-packages-src.tar.gz'
+  version '5.10.0'
+  sha1 '723261bdb52dacf8b202acfa640bb2e857739c18'
 
   LANGUAGES_OPTIONAL = {
     'csharp' => 'C#',
@@ -53,8 +53,14 @@ class Libsbml < Formula
 end
 
 __END__
---- a/src/bindings/ruby/CMakeLists.txt	2013-11-13 01:50:37.000000000 +0900
-+++ b/src/bindings/ruby/CMakeLists.txt	2014-01-05 20:22:00.000000000 +0900
-@@ -155 +155 @@
+--- a/src/bindings/ruby/CMakeLists.txt  2014-04-12 20:44:15.000000000 +0900
++++ b/src/bindings/ruby/CMakeLists.txt  2014-04-12 20:44:59.000000000 +0900
+@@ -161,7 +161,7 @@
+ if (UNIX OR CYGWIN)
+   execute_process(COMMAND "${RUBY_EXECUTABLE}" -e "print RUBY_PLATFORM"
+     OUTPUT_VARIABLE RUBY_PLATFORM)
 -  set(RUBY_PACKAGE_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR}/ruby/site_ruby/${RUBY_VERSION_MAJOR}.${RUBY_VERSION_MINOR}/${RUBY_PLATFORM})
 +  string(REPLACE ${RUBY_POSSIBLE_LIB_DIR} ${CMAKE_INSTALL_LIBDIR} RUBY_PACKAGE_INSTALL_DIR ${RUBY_SITEARCH_DIR})
+ else()
+   set(RUBY_PACKAGE_INSTALL_DIR ${MISC_PREFIX}bindings/ruby)
+ endif()
