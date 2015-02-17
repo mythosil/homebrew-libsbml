@@ -50,6 +50,19 @@ class Libsbml < Formula
       system 'make', 'install'
     end
   end
+
+  test do
+    (testpath/'test.c').write <<-EOS.undent
+      #include <sbml/SBMLTypes.h>
+      int main() {
+        SBMLDocument_t *d = SBMLDocument_createWithLevelAndVersion(3, 1);
+        SBMLDocument_free(d);
+        return 0;
+      }
+    EOS
+    system ENV.cc, 'test.c', '-lsbml', '-o', 'test'
+    system './test'
+  end
 end
 
 __END__
