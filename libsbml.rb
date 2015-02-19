@@ -1,5 +1,3 @@
-require 'formula'
-
 class Libsbml < Formula
   homepage 'http://sbml.org/Software/libSBML'
   url 'http://sourceforge.net/projects/sbml/files/libsbml/5.11.0/stable/libSBML-5.11.0-core-plus-packages-src.tar.gz'
