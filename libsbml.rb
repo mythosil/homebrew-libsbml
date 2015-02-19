@@ -29,7 +29,7 @@ class Libsbml < Formula
       args = std_cmake_args
       args << "-DCMAKE_INSTALL_PREFIX=#{prefix}"
 
-      if build.with? "python" then
+      if build.with? "python"
         args << "-DWITH_PYTHON=ON"
         args << "-DPYTHON_EXECUTABLE='#{%x(python-config --prefix).chomp}/bin/python'"
         args << "-DPYTHON_INCLUDE_DIR='#{%x(python-config --prefix).chomp}/include/python2.7'"
