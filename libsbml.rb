@@ -28,7 +28,7 @@ class Libsbml < Formula
     mkdir "build" do
       args = std_cmake_args
       args << "-DCMAKE_INSTALL_PREFIX=#{prefix}"
-      
+
       if build.with? "python" then
         args << "-DWITH_PYTHON=ON"
         args << "-DPYTHON_EXECUTABLE='#{%x(python-config --prefix).chomp}/bin/python'"
