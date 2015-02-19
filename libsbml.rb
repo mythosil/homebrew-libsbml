@@ -11,7 +11,7 @@ class Libsbml < Formula
     "octave" => "Octave",
     "perl" => "Perl",
     "ruby" => "Ruby",
-    "python" => "Python"
+    "python" => "Python",
   }
   LANGUAGES_OPTIONAL.each do |opt, lang|
     option "with-#{opt}", "generate #{lang} interface library [default=no]"
