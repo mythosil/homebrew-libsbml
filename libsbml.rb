@@ -22,7 +22,7 @@ class Libsbml < Formula
   depends_on :python => :optional
 
   # fix ruby"s sitelib dir
-  def patches; DATA; end
+  patch :DATA
 
   def install
     mkdir "build" do
