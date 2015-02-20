@@ -56,7 +56,7 @@ class Libsbml < Formula
         return 0;
       }
     EOS
-    system ENV.cc, "test.c", "-lsbml", "-o", "test"
+    system ENV.cc, "test.c", "-I#{include}", "-L#{lib}", "-lsbml", "-o", "test"
     system "./test"
   end
 end
