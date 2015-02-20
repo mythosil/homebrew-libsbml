@@ -20,7 +20,7 @@ class Libsbml < Formula
   depends_on "swig" => :build
   depends_on :python => :optional
 
-  # fix ruby"s sitelib dir
+  # fix ruby's sitelib dir
   patch :DATA
 
   def install
